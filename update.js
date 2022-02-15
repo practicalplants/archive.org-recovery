@@ -38,13 +38,14 @@ const swaps = [
   // [/<link rel="alternate" type="application\/atom.*?name="ResourceLoaderDynamicStyles" content="" \/>/ms, ''],
   // [/<link rel="stylesheet" href="https?:\/\/practicalplants.org.*?\s\/>/msg, ''],
   // [/<script>.*?<\/script>/msg, ''],
-  [/<div id="page-buttons">.*?<\/div>\s*<div id="toc-container">/msi, `<div id="toc-container">`],
-  [/<\/body><\/html>/ms, `
-  <script type="text/javascript" src="../_resources/old-skin/resources/js/libs/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="../_resources/old-skin/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../_resources/old-skin/resources/js/jquery.qtip-1.0.0-rc3.min.js"></script>
-	<script type="text/javascript" src="../_resources/old-skin/resources/js/practicalplants.init.article.js"></script>
-</body></html>`]
+  //   [/<div id="page-buttons">.*?<\/div>\s*<div id="toc-container">/msi, `<div id="toc-container">`],
+  //   [/<\/body><\/html>/ms, `
+  //   <script type="text/javascript" src="../_resources/old-skin/resources/js/libs/jquery-1.8.2.min.js"></script>
+  // 	<script type="text/javascript" src="../_resources/old-skin/resources/bootstrap/js/bootstrap.min.js"></script>
+  // 	<script type="text/javascript" src="../_resources/old-skin/resources/js/jquery.qtip-1.0.0-rc3.min.js"></script>
+  // 	<script type="text/javascript" src="../_resources/old-skin/resources/js/practicalplants.init.article.js"></script>
+  // </body></html>`],
+  [/<!-- Piwik -->.*?-->/msi, '']
 ]
 
 async function main () {
