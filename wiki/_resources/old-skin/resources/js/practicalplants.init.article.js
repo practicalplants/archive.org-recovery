@@ -11,13 +11,13 @@ function init(){
 	}
 
 	//indentSections();
-	initTips();
+	// initTips();
 	initIconbarPopovers();
 	initCCNC();
-	setArticleContentHeight();
-	initStickySidebar();
-	initScrollSpyTOC();
-	moveDataTable();
+	// setArticleContentHeight();
+	// initStickySidebar();
+	// initScrollSpyTOC();
+	// moveDataTable();
 }
 function initCollapse(){
 	//mw.log('init collapse');
@@ -133,7 +133,7 @@ function initScrollSpyTOC(){
     //if the toc is scrolled, make sure the active item is visible
     //mw.log('Setting scrollTop of TOC to active element position', $(ev.target).position().top );
     //$('#toc td > ul').scrollTop( $(ev.target).position().top );
-    mw.log('Activate!', $(ev.target).find('a').attr('href'));
+    // mw.log('Activate!', $(ev.target).find('a').attr('href'));
   });
 }
 
@@ -312,7 +312,7 @@ function initIconbarPopovers(){
 				&& mouse.y > el.offset().top
 				&& mouse.y < el.offset().top + el.outerHeight()
 			){
-				mw.log('Mouse within bounds of el',mouse,el.offset());
+				// mw.log('Mouse within bounds of el',mouse,el.offset());
 				return true;
 			}
 			return false;
@@ -324,7 +324,7 @@ function initIconbarPopovers(){
 		}
 
 		var icon_leave = function(ev){
-			mw.log('left icon',ev);
+			// mw.log('left icon',ev);
 			var $toEl = $(ev.relatedTarget);
 			var $isPopover = false;
 			if($toEl.hasClass('.popover')){
@@ -334,11 +334,11 @@ function initIconbarPopovers(){
 			}
 
 			if(	$isPopover && $isPopover.get(0) === $popover_el.get(0) ){	
-				mw.log('Mouse moved to popover');
+				// mw.log('Mouse moved to popover');
 				return;
 			}
 			
-			mw.log("Mouse left icon.",$toEl);
+			// mw.log("Mouse left icon.",$toEl);
 			
 			hide_popover();
 			
@@ -363,14 +363,14 @@ function initIconbarPopovers(){
 
 			//if the mouse has moved to the icon, don't hide, let the icon mouseleave handle it
 			if($isIcon && $isIcon.get(0) === $this.get(0)){
-				mw.log('Popover mouseleave fired. Mouse moved back to icon.');
+				// mw.log('Popover mouseleave fired. Mouse moved back to icon.');
 				return;
 			}
 			//mw.log('isTip?',$toEl,$toEl.hasClass('tooltip'), $toEl.parent().hasClass('tooltip'), $toEl.parents('.tooltip'));
 			//if the mouse moves over a tip that is spawned by this popover, this mouseleave is fired as the tooltip isn't nested within this element
 			//as long as the mouse cursor is still within the bounds of this popover, we ignore it
 			if(($toEl.hasClass('tooltip') || $toEl.parent().hasClass('tooltip')) && mouse_within_bounds($popover_el)){
-				mw.log("Popover mouseleave event fired, but mouse still within bounds of popover. Ignoring.");
+				// mw.log("Popover mouseleave event fired, but mouse still within bounds of popover. Ignoring.");
 				return;
 			}
 			popover.hide();
@@ -379,7 +379,7 @@ function initIconbarPopovers(){
 		var show_popover = function(ev){
 			//if the popover is not currently visible, show it
 			if($popover_el.hasClass('in')){
-				mw.log('Popover is already visible');
+				// mw.log('Popover is already visible');
 				return;
 			}
 			popover.show();
@@ -402,19 +402,19 @@ function initIconbarPopovers(){
 			$popover_el.find('.key .iconbar-icon').each(function(){
 			  $(this).tooltip({placement:'top'});
 			  popover_tips.push($(this).data('tooltip'));
-        mw.log('added tip', popover_tips);
+        // mw.log('added tip', popover_tips);
 			});
 		}
 		var hide_popover = function(){
 			if(!$popover_el.hasClass('in')){
-				mw.log('Popover is already hidden');
+				// mw.log('Popover is already hidden');
 				return;
 			}
 			$('body').unbind('mousemove',mousemove);
 			$popover_el.find('.key .iconbar-icon').tooltip('destroy');
 			for(var i=0,l=popover_tips.length,tip; i<l; i++){
 			  tip = popover_tips.shift();
-			  mw.log('Destroying tip',tip);
+			  // mw.log('Destroying tip',tip);
 			  tip.destroy();
 			};
 			popover.hide();

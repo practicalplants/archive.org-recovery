@@ -22,7 +22,7 @@ const swaps = [
 //   <link rel="stylesheet" href="../_resources/css/masthead.css" media="screen" />
 //   <link rel="stylesheet" href="../_resources/css/inline-1.css" media="screen" />
 //   <link rel="stylesheet" href="../_resources/css/load-1.css" media="screen" />
-// `],
+// `],̦̦
 //   [/<article id="main-entry" class="wiki-entry">/ms, `<article id="main-entry" class="wiki-entry">
 //   <div id="article-state" class="article-state-box">
 //     <p>This is an archived copy of this article, recovered after a server failure in January 2022.</p>
@@ -31,13 +31,20 @@ const swaps = [
 // `
 //   ], 
   //<script src="http://practicalplants.org/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=practicalplants&amp;*"></script>
-  [/<link rel="EditURI" .*? \/>/ms, ''],
-  [/<link rel="ExportRDF".*?\/>/ms, ''],
-  [/<link rel="search" type="application\/opensearchdescription.*?\/>/, ''],
-  [/\s*<script src="https?:\/\/practicalplants.org.*?<\/script>/msg, ''],
-  [/<link rel="alternate" type="application\/atom.*?name="ResourceLoaderDynamicStyles" content="" \/>/ms, ''],
-  [/<link rel="stylesheet" href="https?:\/\/practicalplants.org.*?\s\/>/msg, ''],
-  [/<script>.*?<\/script>/msg, '']
+  // [/<link rel="EditURI" .*? \/>/ms, ''],
+  // [/<link rel="ExportRDF".*?\/>/ms, ''],
+  // [/<link rel="search" type="application\/opensearchdescription.*?\/>/, ''],
+  // [/\s*<script src="https?:\/\/practicalplants.org.*?<\/script>/msg, ''],
+  // [/<link rel="alternate" type="application\/atom.*?name="ResourceLoaderDynamicStyles" content="" \/>/ms, ''],
+  // [/<link rel="stylesheet" href="https?:\/\/practicalplants.org.*?\s\/>/msg, ''],
+  // [/<script>.*?<\/script>/msg, ''],
+  [/<div id="page-buttons">.*?<\/div>\s*<div id="toc-container">/msi, `<div id="toc-container">`],
+  [/<\/body><\/html>/ms, `
+  <script type="text/javascript" src="../_resources/old-skin/resources/js/libs/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="../_resources/old-skin/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../_resources/old-skin/resources/js/jquery.qtip-1.0.0-rc3.min.js"></script>
+	<script type="text/javascript" src="../_resources/old-skin/resources/js/practicalplants.init.article.js"></script>
+</body></html>`]
 ]
 
 async function main () {
@@ -66,7 +73,7 @@ async function main () {
     })
 
     // swaps.forEach(swap => {
-    //   const match = html.match(swap[0]);
+    //   const match = htmlOrig.match(swap[0]);
     //   if (match) {
     //     console.log('matched', match.index)
     //   }else {
